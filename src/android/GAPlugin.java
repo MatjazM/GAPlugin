@@ -21,6 +21,10 @@ public class GAPlugin extends CordovaPlugin {
 				ga.setDefaultTracker(tracker);
 				callback.success("initGA - id = " + args.getString(0) + "; interval = " + args.getInt(1) + " seconds");
 				return true;
+				
+				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // Matjaž debug
+				    WebView.setWebContentsDebuggingEnabled(true);
+				}
 			} catch (final Exception e) {
 				callback.error(e.getMessage());
 			}
