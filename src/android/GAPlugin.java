@@ -8,8 +8,6 @@ import com.google.analytics.tracking.android.GAServiceManager;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.Tracker;
 
-import Build;
-
 public class GAPlugin extends CordovaPlugin {
 	@Override
 	public boolean execute(String action, JSONArray args, CallbackContext callback) {
@@ -23,10 +21,6 @@ public class GAPlugin extends CordovaPlugin {
 				ga.setDefaultTracker(tracker);
 				callback.success("initGA - id = " + args.getString(0) + "; interval = " + args.getInt(1) + " seconds");
 				return true;
-				
-				if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // Matjaž debug
-				    WebView.setWebContentsDebuggingEnabled(true);
-				}
 			} catch (final Exception e) {
 				callback.error(e.getMessage());
 			}
